@@ -67,6 +67,37 @@
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+
+        /* Language toggle */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            background: #f3f4f6;
+            border-radius: 9999px;
+            padding: 3px;
+            gap: 2px;
+        }
+        .lang-btn {
+            padding: 4px 14px;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            color: #6b7280;
+            transition: all 0.2s ease;
+        }
+        .lang-btn.active {
+            background: #3A0CA3;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(58,12,163,0.25);
+        }
+        .lang-btn:hover:not(.active) {
+            background: #e5e7eb;
+            color: #374151;
+        }
     </style>
 </head>
 
@@ -93,18 +124,26 @@
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#home"
-                        class="text-gray-600 hover:text-primary-600 font-semibold transition-colors">Home</a>
+                        class="text-gray-600 hover:text-primary-600 font-semibold transition-colors" data-ta="முகப்பு" data-en="Home">Home</a>
                     <a href="#products"
-                        class="text-gray-600 hover:text-primary-600 font-semibold transition-colors">Products</a>
+                        class="text-gray-600 hover:text-primary-600 font-semibold transition-colors" data-ta="தயாரிப்புகள்" data-en="Products">Products</a>
                     <a href="#services"
-                        class="text-gray-600 hover:text-primary-600 font-semibold transition-colors">Services</a>
+                        class="text-gray-600 hover:text-primary-600 font-semibold transition-colors" data-ta="சேவைகள்" data-en="Services">Services</a>
                     <a href="#contact"
-                        class="px-6 py-2 bg-primary-900 text-white rounded-full font-medium hover:bg-primary-800 transition-colors shadow-md hover:shadow-lg">Contact
-                        Us</a>
+                        class="px-6 py-2 bg-primary-900 text-white rounded-full font-medium hover:bg-primary-800 transition-colors shadow-md hover:shadow-lg" data-ta="தொடர்பு கொள்ளுங்கள்" data-en="Contact Us">Contact Us</a>
+                    <!-- Language Switcher -->
+                    <div class="lang-switcher" id="lang-switcher">
+                        <button class="lang-btn" id="btn-ta" onclick="setLang('ta')">தமிழ்</button>
+                        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">English</button>
+                    </div>
                 </div>
 
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
+                <!-- Mobile menu button + lang toggle -->
+                <div class="md:hidden flex items-center gap-3">
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="setLang('ta')">தமிழ்</button>
+                        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+                    </div>
                     <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary-900 focus:outline-none p-2">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
@@ -116,14 +155,13 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#home"
-                    class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50">Home</a>
+                    class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50" data-ta="முகப்பு" data-en="Home">Home</a>
                 <a href="#products"
-                    class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50">Products</a>
+                    class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50" data-ta="தயாரிப்புகள்" data-en="Products">Products</a>
                 <a href="#services"
-                    class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50">Services</a>
+                    class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50" data-ta="சேவைகள்" data-en="Services">Services</a>
                 <a href="#contact"
-                    class="block px-3 py-3 mt-4 text-center rounded-md text-base font-medium bg-primary-900 text-white">Contact
-                    Us</a>
+                    class="block px-3 py-3 mt-4 text-center rounded-md text-base font-medium bg-primary-900 text-white" data-ta="தொடர்பு கொள்ளுங்கள்" data-en="Contact Us">Contact Us</a>
             </div>
         </div>
     </nav>
@@ -136,38 +174,46 @@
                 <!-- Text Content -->
                 <div class="text-white space-y-6 lg:pr-10">
                     <div
-                        class="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm font-semibold tracking-wide mb-2">
+                        class="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm font-semibold tracking-wide mb-2"
+                        data-ta="பர்னிச்சர் & இன்டீரியர் வொர்க்ஸ் — மயாடிபுத்தூர்" data-en="Furniture & Interior Works — Mayadiputhur">
                         Furniture & Interior Works — Mayadiputhur
                     </div>
                     <h1 class="font-tamil font-bold text-5xl lg:text-7xl leading-tight drop-shadow-md">
                         பிரவீன்<br>
                         <span class="text-accent-500">பர்னிச்சர்ஸ்</span>
                     </h1>
-                    <p class="font-tamil text-xl text-gray-200 leading-relaxed max-w-lg">
+                    <p class="font-tamil text-xl text-gray-200 leading-relaxed max-w-lg"
+                        data-ta="உங்களுக்குத் தேவையான அனைத்து வகையான பர்னிச்சர்கள் மற்றும் இன்டீரியர் வொர்க்ஸ் சிறந்த முறையில் செய்து தரப்படும்."
+                        data-en="All types of furniture and interior works — made the right way, at a fair price.">
                         உங்களுக்குத் தேவையான அனைத்து வகையான பர்னிச்சர்கள் மற்றும் இன்டீரியர் வொர்க்ஸ் சிறந்த முறையில்
                         செய்து தரப்படும்.
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4 pt-4">
                         <a href="#products"
-                            class="px-8 py-3.5 bg-accent-600 hover:bg-accent-500 text-white rounded-full font-bold text-lg transition-all text-center shadow-lg hover:shadow-accent-500/30 flex items-center justify-center gap-2">
+                            class="px-8 py-3.5 bg-accent-600 hover:bg-accent-500 text-white rounded-full font-bold text-lg transition-all text-center shadow-lg hover:shadow-accent-500/30 flex items-center justify-center gap-2"
+                            data-ta="எங்கள் தயாரிப்புகளை பாருங்கள்" data-en="See Our Products">
                             See Our Products <i class="fa-solid fa-arrow-right text-sm"></i>
                         </a>
                         <a href="#contact"
-                            class="px-8 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full font-semibold text-lg transition-all text-center flex items-center justify-center gap-2">
+                            class="px-8 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full font-semibold text-lg transition-all text-center flex items-center justify-center gap-2"
+                            data-ta="இப்போது அழைக்கவும்" data-en="Call Now">
                             <i class="fa-solid fa-phone"></i> Call Now
                         </a>
                     </div>
 
                     <div class="pt-8 flex flex-wrap items-center gap-6 text-sm text-gray-300">
                         <div class="flex items-center gap-2">
-                            <i class="fa-regular fa-circle-check text-accent-500"></i> Fair pricing, no middlemen
+                            <i class="fa-regular fa-circle-check text-accent-500"></i>
+                            <span data-ta="நியாயமான விலை, இடைத்தரகர் இல்லை" data-en="Fair pricing, no middlemen">Fair pricing, no middlemen</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <i class="fa-regular fa-circle-check text-accent-500"></i> Solid, long-lasting wood
+                            <i class="fa-regular fa-circle-check text-accent-500"></i>
+                            <span data-ta="உறுதியான, நீண்டகால மரம்" data-en="Solid, long-lasting wood">Solid, long-lasting wood</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <i class="fa-regular fa-circle-check text-accent-500"></i> Built to your measurements
+                            <i class="fa-regular fa-circle-check text-accent-500"></i>
+                            <span data-ta="உங்கள் அளவுகளுக்கு ஏற்ப தயாரிக்கப்படும்" data-en="Built to your measurements">Built to your measurements</span>
                         </div>
                     </div>
                 </div>
@@ -229,8 +275,11 @@
                         class="w-16 h-16 bg-primary-100 text-primary-600 rounded-2xl flex items-center justify-center text-2xl mb-6 transform rotate-3">
                         <i class="fa-solid fa-couch"></i>
                     </div>
-                    <h3 class="font-tamil font-bold text-xl text-gray-900 mb-3">பரந்த அளவிலான பர்னிச்சர்கள்</h3>
-                    <p class="text-gray-500 leading-relaxed font-tamil">வீடு மற்றும் அலுவலகத்திற்கு தேவையான அனைத்து
+                    <h3 class="font-tamil font-bold text-xl text-gray-900 mb-3"
+                        data-ta="பரந்த அளவிலான பர்னிச்சர்கள்" data-en="Wide Range of Furniture">பரந்த அளவிலான பர்னிச்சர்கள்</h3>
+                    <p class="text-gray-500 leading-relaxed font-tamil"
+                        data-ta="வீடு மற்றும் அலுவலகத்திற்கு தேவையான அனைத்து விதமான மேஜை, நாற்காலி, பீரோ வகைகள்."
+                        data-en="Tables, chairs, wardrobes, and beds — for homes and offices alike.">வீடு மற்றும் அலுவலகத்திற்கு தேவையான அனைத்து
                         விதமான மேஜை, நாற்காலி, பீரோ வகைகள்.</p>
                 </div>
                 <!-- Feature 2 -->
@@ -240,8 +289,11 @@
                         class="w-16 h-16 bg-accent-50 text-accent-600 rounded-2xl flex items-center justify-center text-2xl mb-6 transform -rotate-3">
                         <i class="fa-solid fa-hammer"></i>
                     </div>
-                    <h3 class="font-tamil font-bold text-xl text-gray-900 mb-3">இன்டீரியர் வொர்க்ஸ்</h3>
-                    <p class="text-gray-500 leading-relaxed font-tamil">சிறந்த முறையில் உங்கள் விருப்பத்திற்கு ஏற்ப
+                    <h3 class="font-tamil font-bold text-xl text-gray-900 mb-3"
+                        data-ta="இன்டீரியர் வொர்க்ஸ்" data-en="Interior Works">இன்டீரியர் வொர்க்ஸ்</h3>
+                    <p class="text-gray-500 leading-relaxed font-tamil"
+                        data-ta="சிறந்த முறையில் உங்கள் விருப்பத்திற்கு ஏற்ப அனைத்து வகையான மர வேலைகளும் செய்து தரப்படும்."
+                        data-en="All kinds of woodwork done your way — built to last.">சிறந்த முறையில் உங்கள் விருப்பத்திற்கு ஏற்ப
                         அனைத்து வகையான மர வேலைகளும் செய்து தரப்படும்.</p>
                 </div>
                 <!-- Feature 3 -->
@@ -251,8 +303,11 @@
                         class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mb-6 transform rotate-3">
                         <i class="fa-solid fa-truck-fast"></i>
                     </div>
-                    <h3 class="font-tamil font-bold text-xl text-gray-900 mb-3">தரமான சேவை</h3>
-                    <p class="text-gray-500 leading-relaxed font-tamil">நீண்ட காலம் உழைக்கக்கூடிய தரமான மரங்களால்
+                    <h3 class="font-tamil font-bold text-xl text-gray-900 mb-3"
+                        data-ta="தரமான சேவை" data-en="Reliable Service">தரமான சேவை</h3>
+                    <p class="text-gray-500 leading-relaxed font-tamil"
+                        data-ta="நீண்ட காலம் உழைக்கக்கூடிய தரமான மரங்களால் செய்யப்பட்ட பொருட்கள் மற்றும் சிறந்த வாடிக்கையாளர் சேவை."
+                        data-en="Products built from long-lasting wood, backed by good customer care.">நீண்ட காலம் உழைக்கக்கூடிய தரமான மரங்களால்
                         செய்யப்பட்ட பொருட்கள் மற்றும் சிறந்த வாடிக்கையாளர் சேவை.</p>
                 </div>
             </div>
@@ -262,8 +317,10 @@
     <section id="products" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-accent-600 font-semibold tracking-wider uppercase text-sm mb-2 block">What we make</span>
-                <h2 class="font-tamil font-bold text-4xl lg:text-5xl text-primary-900 mb-4">எங்கள் தயாரிப்புகள்</h2>
+                <span class="text-accent-600 font-semibold tracking-wider uppercase text-sm mb-2 block"
+                    data-ta="நாங்கள் என்ன செய்கிறோம்" data-en="What we make">What we make</span>
+                <h2 class="font-tamil font-bold text-4xl lg:text-5xl text-primary-900 mb-4"
+                    data-ta="எங்கள் தயாரிப்புகள்" data-en="Our Products">எங்கள் தயாரிப்புகள்</h2>
                 <div class="h-1.5 w-24 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto rounded-full mb-6"></div>
                 <p class="text-gray-600 text-lg font-tamil">
                     (உடன் பீரோ, ஸ்டீல் ஷோபா, மர ஷோபா, பிளாஸ்டிக் நாற்காலி, ஸ்டீல் கட்டில், பீரோ,
@@ -400,10 +457,14 @@
         </div>
 
         <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
-            <h2 class="font-tamil font-bold text-3xl md:text-4xl text-white mb-6 leading-tight">
+            <h2 class="font-tamil font-bold text-3xl md:text-4xl text-white mb-6 leading-tight"
+                data-ta="உங்கள் வீட்டை அழகாக்க தரமான மரச்சாமான்கள் தேவைப்படுகிறதா?"
+                data-en="Looking for quality furniture to make your home beautiful?">
                 உங்கள் வீட்டை அழகாக்க தரமான மரச்சாமான்கள் தேவைப்படுகிறதா?
             </h2>
-            <p class="text-wood-200 text-lg mb-8 font-tamil max-w-2xl mx-auto">
+            <p class="text-wood-200 text-lg mb-8 font-tamil max-w-2xl mx-auto"
+                data-ta="சிறந்த டிசைன், உறுதியான தரம், மற்றும் நியாமான விலையில். இன்றே பிரவீன் பர்னிச்சர்ஸை அணுகவும்."
+                data-en="Good design, solid wood, fair price. Reach out to Praveen Furnitures today.">
                 சிறந்த டிசைன், உறுதியான தரம், மற்றும் நியாமான விலையில். இன்றே பிரவீன் பர்னிச்சர்ஸை அணுகவும்.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
@@ -431,8 +492,10 @@
                     </div>
 
                     <div class="relative z-10">
-                        <span class="text-primary-200 font-semibold tracking-wider uppercase text-sm mb-2 block">Call or visit us</span>
-                        <h2 class="font-tamil font-bold text-3xl lg:text-4xl mb-8">தொடர்பு கொள்ள</h2>
+                        <span class="text-primary-200 font-semibold tracking-wider uppercase text-sm mb-2 block"
+                            data-ta="அழைக்கவும் அல்லது வருகை தரவும்" data-en="Call or visit us">Call or visit us</span>
+                        <h2 class="font-tamil font-bold text-3xl lg:text-4xl mb-8"
+                            data-ta="தொடர்பு கொள்ள" data-en="Get in Touch">தொடர்பு கொள்ள</h2>
 
                         <div class="space-y-8">
                             <!-- Phone Numbers -->
@@ -442,7 +505,8 @@
                                     <i class="fa-solid fa-phone-volume text-xl text-accent-400"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-lg font-semibold text-white/90 mb-2">Phone Numbers</h4>
+                                    <h4 class="text-lg font-semibold text-white/90 mb-2"
+                                        data-ta="தொலைபேசி எண்கள்" data-en="Phone Numbers">Phone Numbers</h4>
                                     <div class="space-y-2 font-mono text-lg">
                                         <a href="tel:+916374191464"
                                             class="block hover:text-accent-400 transition-colors flex items-center gap-2">
@@ -469,7 +533,8 @@
                                     <i class="fa-solid fa-location-dot text-xl text-accent-400"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-lg font-semibold text-white/90 mb-2 font-tamil">முகவரி</h4>
+                                    <h4 class="text-lg font-semibold text-white/90 mb-2 font-tamil"
+                                        data-ta="முகவரி" data-en="Address">முகவரி</h4>
                                     <address class="not-italic text-gray-300 leading-relaxed font-sans text-base">
                                         180/10, Mayadiputhur<br>
                                         Eruvadi Road - 627102
@@ -496,7 +561,8 @@
 
                 <!-- Map / Quick Contact Form Area -->
                 <div class="p-10 lg:p-12 flex flex-col justify-center">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6 font-tamil">எங்களை அணுகும் வழி</h3>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 font-tamil"
+                        data-ta="எங்களை அணுகும் வழி" data-en="How to Find Us">எங்களை அணுகும் வழி</h3>
                     <!-- Placeholder for Map, using a styled div to represent it -->
                     <div
                         class="w-full h-64 bg-gray-100 rounded-2xl border border-gray-200 overflow-hidden relative group">
@@ -515,10 +581,13 @@
                     </div>
 
                     <div class="mt-8">
-                        <p class="text-gray-600 mb-4">எங்கள் கடைக்கு நேரில் வந்து பர்னிச்சர்களை பார்வையிட உங்களை
+                        <p class="text-gray-600 mb-4"
+                            data-ta="எங்கள் கடைக்கு நேரில் வந்து பர்னிச்சர்களை பார்வையிட உங்களை அன்புடன் வரவேற்கிறோம்."
+                            data-en="Come visit our shop and see the furniture for yourself. You're always welcome.">எங்கள் கடைக்கு நேரில் வந்து பர்னிச்சர்களை பார்வையிட உங்களை
                             அன்புடன் வரவேற்கிறோம்.</p>
                         <a href="https://maps.google.com/?q=Mayadiputhur+Eruvadi+Road+627102" target="_blank"
-                            class="w-full block text-center px-6 py-3.5 bg-gray-900 hover:bg-black text-white rounded-xl font-medium transition-colors shadow-md">
+                            class="w-full block text-center px-6 py-3.5 bg-gray-900 hover:bg-black text-white rounded-xl font-medium transition-colors shadow-md"
+                            data-ta="கூகுள் மேப்பில் திற" data-en="Open in Google Maps">
                             <i class="fa-solid fa-map-location-dot mr-2"></i> Open in Google Maps
                         </a>
                     </div>
@@ -540,26 +609,29 @@
                         </div>
                         <span class="font-tamil font-bold text-2xl text-white">பிரவீன் பர்னிச்சர்ஸ்</span>
                     </div>
-                    <p class="text-gray-400 leading-relaxed font-tamil text-sm">
+                    <p class="text-gray-400 leading-relaxed font-tamil text-sm"
+                        data-ta="சிறந்த தரம், நியாமான விலை. உங்கள் வீட்டை அழகாக்க தேவையான அனைத்து மர வேலைகளும் செய்து தரப்படும்."
+                        data-en="Good quality, fair price. All woodwork needed to make your home beautiful.">
                         சிறந்த தரம், நியாமான விலை. உங்கள் வீட்டை அழகாக்க தேவையான அனைத்து மர வேலைகளும் செய்து தரப்படும்.
                     </p>
                 </div>
 
                 <!-- Quick Links -->
                 <div>
-                    <h4 class="text-white font-semibold text-lg mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
+                    <h4 class="text-white font-semibold text-lg mb-6 uppercase tracking-wider text-sm"
+                        data-ta="விரைவு இணைப்புகள்" data-en="Quick Links">Quick Links</h4>
                     <ul class="space-y-3">
-                        <li><a href="#home" class="hover:text-primary-400 transition-colors flex items-center gap-2"><i
-                                    class="fa-solid fa-chevron-right text-xs"></i> Home</a></li>
+                        <li><a href="#home" class="hover:text-primary-400 transition-colors flex items-center gap-2"
+                                data-ta="முகப்பு" data-en="Home"><i class="fa-solid fa-chevron-right text-xs"></i> Home</a></li>
                         <li><a href="#products"
-                                class="hover:text-primary-400 transition-colors flex items-center gap-2"><i
-                                    class="fa-solid fa-chevron-right text-xs"></i> Products</a></li>
+                                class="hover:text-primary-400 transition-colors flex items-center gap-2"
+                                data-ta="தயாரிப்புகள்" data-en="Products"><i class="fa-solid fa-chevron-right text-xs"></i> Products</a></li>
                         <li><a href="#services"
-                                class="hover:text-primary-400 transition-colors flex items-center gap-2"><i
-                                    class="fa-solid fa-chevron-right text-xs"></i> Services</a></li>
+                                class="hover:text-primary-400 transition-colors flex items-center gap-2"
+                                data-ta="சேவைகள்" data-en="Services"><i class="fa-solid fa-chevron-right text-xs"></i> Services</a></li>
                         <li><a href="#contact"
-                                class="hover:text-primary-400 transition-colors flex items-center gap-2"><i
-                                    class="fa-solid fa-chevron-right text-xs"></i> Contact Us</a></li>
+                                class="hover:text-primary-400 transition-colors flex items-center gap-2"
+                                data-ta="தொடர்பு கொள்ளுங்கள்" data-en="Contact Us"><i class="fa-solid fa-chevron-right text-xs"></i> Contact Us</a></li>
                     </ul>
                 </div>
 
@@ -604,6 +676,38 @@
     </footer>
 
     <script>
+        // ── Language switcher ──────────────────────────────────────────────
+        let currentLang = 'en';
+
+        function setLang(lang) {
+            currentLang = lang;
+
+            // Update every element that carries data-ta / data-en
+            document.querySelectorAll('[data-ta][data-en]').forEach(el => {
+                // For anchor tags that contain an icon, preserve the icon
+                const icon = el.querySelector('i');
+                if (icon) {
+                    el.innerHTML = icon.outerHTML + ' ' + el.getAttribute('data-' + lang);
+                } else {
+                    el.textContent = el.getAttribute('data-' + lang);
+                }
+            });
+
+            // Toggle active state on all lang buttons
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.lang-btn').forEach(b => {
+                // match button by text content
+                const isTa = b.textContent.includes('தமிழ்') || b.textContent === 'தமிழ்';
+                const isEn = b.textContent === 'English' || b.textContent === 'EN';
+                if (lang === 'ta' && isTa) b.classList.add('active');
+                if (lang === 'en' && isEn) b.classList.add('active');
+            });
+
+            // Update html lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // ── Boot ──────────────────────────────────────────────────────────
         document.addEventListener('DOMContentLoaded', () => {
             // Mobile Menu Toggle
             const btn = document.getElementById('mobile-menu-btn');
