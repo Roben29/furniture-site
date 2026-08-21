@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praveen Furnitures — Mayadiputhur</title>
+    <meta name="description" content="Praveen Furnitures — quality wood furniture and interior works at fair prices. Located at Mayadiputhur, Eruvadi Road.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 50:'#f5f3ff',100:'#ede9fe',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#3A0CA3' },
+                        accent:  { 500:'#f43f5e', 600:'#e11d48' },
+                        wood:    { 100:'#f4ece1', 200:'#e3d2ba', 800:'#4a3728' }
+                    },
+                    fontFamily: { serif:['"Playfair Display"','serif'], sans:['"Inter"','sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav { background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); border-bottom:1px solid rgba(0,0,0,0.05); }
+        .hero-pattern { background-color:#3A0CA3; background-image:radial-gradient(circle at 100% 100%,#e11d48 0,transparent 50%),radial-gradient(circle at 0% 0%,#7c3aed 0,transparent 50%); }
+        .product-card { transition:all 0.3s ease; }
+        .product-card:hover { transform:translateY(-5px); box-shadow:0 20px 25px -5px rgba(0,0,0,0.1),0 10px 10px -5px rgba(0,0,0,0.04); }
+        .lang-switcher { display:flex; align-items:center; background:#f3f4f6; border-radius:9999px; padding:3px; gap:2px; }
+        .lang-pill { display:inline-flex; align-items:center; padding:4px 14px; border-radius:9999px; font-size:0.78rem; font-weight:700; letter-spacing:0.04em; cursor:pointer; text-decoration:none; color:#6b7280; background:transparent; transition:all 0.2s ease; }
+        .lang-pill:hover { background:#e5e7eb; color:#374151; }
+        .lang-pill.active { background:#3A0CA3; color:#fff; box-shadow:0 2px 8px rgba(58,12,163,0.25); }
+    </style>
+</head>
+
+<body class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-primary-500 selection:text-white">
+
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-primary-900 rounded-lg flex items-center justify-center text-white shadow-lg">
+                        <i class="fa-solid fa-couch text-xl"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif font-bold text-2xl text-primary-900 leading-none">Praveen</span>
+                        <span class="font-sans text-xs font-semibold text-gray-500 uppercase tracking-widest mt-1">Furnitures</span>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-600 hover:text-primary-600 font-semibold transition-colors">Home</a>
+                    <a href="#products" class="text-gray-600 hover:text-primary-600 font-semibold transition-colors">Products</a>
+                    <a href="#services" class="text-gray-600 hover:text-primary-600 font-semibold transition-colors">Services</a>
+                    <a href="#contact" class="px-6 py-2 bg-primary-900 text-white rounded-full font-medium hover:bg-primary-800 transition-colors shadow-md">Contact Us</a>
+                    <div class="lang-switcher">
+                        <a href="index.html" class="lang-pill">தமிழ்</a>
+                        <span class="lang-pill active">English</span>
+                    </div>
+                </div>
+
+                <div class="md:hidden flex items-center gap-3">
+                    <div class="lang-switcher">
+                        <a href="index.html" class="lang-pill">தமிழ்</a>
+                        <span class="lang-pill active">EN</span>
+                    </div>
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary-900 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50">Home</a>
+                <a href="#products" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50">Products</a>
+                <a href="#services" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50">Services</a>
+                <a href="#contact" class="block px-3 py-3 mt-4 text-center rounded-md text-base font-medium bg-primary-900 text-white">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative pt-28 pb-20 lg:pt-40 lg:pb-28 overflow-hidden hero-pattern">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white space-y-6 lg:pr-10">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm font-semibold tracking-wide mb-2">
+                        Furniture &amp; Interior Works — Mayadiputhur
+                    </div>
+                    <h1 class="font-serif font-bold text-5xl lg:text-7xl leading-tight drop-shadow-md">
+                        Praveen<br><span class="text-accent-500">Furnitures</span>
+                    </h1>
+                    <p class="text-xl text-gray-200 leading-relaxed max-w-lg">
+                        All types of furniture and interior works — made the right way, at a fair price.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a href="#products" class="px-8 py-3.5 bg-accent-600 hover:bg-accent-500 text-white rounded-full font-bold text-lg transition-all text-center shadow-lg flex items-center justify-center gap-2">
+                            See Our Products <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                        <a href="#contact" class="px-8 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full font-semibold text-lg transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-phone"></i> Call Now
+                        </a>
+                    </div>
+                    <div class="pt-8 flex flex-wrap items-center gap-6 text-sm text-gray-300">
+                        <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-accent-500"></i> Fair pricing, no middlemen</div>
+                        <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-accent-500"></i> Solid, long-lasting wood</div>
+                        <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-accent-500"></i> Built to your measurements</div>
+                    </div>
+                </div>
+                <div class="relative hidden lg:block">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-accent-500 to-primary-500 rounded-2xl blur opacity-30"></div>
+                    <div class="grid grid-cols-2 gap-4 relative z-10">
+                        <div class="space-y-4 pt-8">
+                            <div class="rounded-2xl overflow-hidden shadow-2xl h-64 border-4 border-white/10">
+                                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sofa" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                            </div>
+                            <div class="rounded-2xl overflow-hidden shadow-2xl h-48 border-4 border-white/10">
+                                <img src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bed" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="rounded-2xl overflow-hidden shadow-2xl h-48 border-4 border-white/10">
+                                <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wardrobe" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                            </div>
+                            <div class="rounded-2xl overflow-hidden shadow-2xl h-64 border-4 border-white/10">
+                                <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dining Table" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 120" class="w-full h-auto fill-gray-50" preserveAspectRatio="none">
+                <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,42.7C1120,32,1280,32,1360,32L1440,32L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section id="services" class="py-16 bg-gray-50 relative -mt-10 z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col items-center text-center border border-gray-100 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-2xl flex items-center justify-center text-2xl mb-6 transform rotate-3"><i class="fa-solid fa-couch"></i></div>
+                    <h3 class="font-bold text-xl text-gray-900 mb-3">Wide Range of Furniture</h3>
+                    <p class="text-gray-500 leading-relaxed">Tables, chairs, wardrobes, and beds — for homes and offices alike.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col items-center text-center border border-gray-100 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-accent-50 text-accent-600 rounded-2xl flex items-center justify-center text-2xl mb-6 transform -rotate-3"><i class="fa-solid fa-hammer"></i></div>
+                    <h3 class="font-bold text-xl text-gray-900 mb-3">Interior Works</h3>
+                    <p class="text-gray-500 leading-relaxed">All kinds of woodwork done your way — built to last.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col items-center text-center border border-gray-100 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mb-6 transform rotate-3"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h3 class="font-bold text-xl text-gray-900 mb-3">Reliable Service</h3>
+                    <p class="text-gray-500 leading-relaxed">Products built from long-lasting wood, backed by good customer care.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-accent-600 font-semibold tracking-wider uppercase text-sm mb-2 block">What we make</span>
+                <h2 class="font-serif font-bold text-4xl lg:text-5xl text-primary-900 mb-4">Our Products</h2>
+                <div class="h-1.5 w-24 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 text-lg">Wardrobes, steel sofas, wooden sofas, plastic chairs, steel beds, office tables, computer tables, chairs, dining tables, dressing tables, wooden beds, swing wardrobes, rolling chairs, corner sofas, bunk beds, TV sofas</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <div class="product-card bg-gray-50 rounded-2xl overflow-hidden group border border-gray-100">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Wardrobes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="w-10 h-10 bg-primary-100 text-primary-700 rounded-full flex items-center justify-center mb-3"><i class="fa-solid fa-door-closed"></i></div>
+                        <h3 class="font-bold text-xl text-gray-900 mb-1">Wardrobes</h3>
+                        <p class="text-gray-500 text-sm">Standard &amp; swing wardrobes</p>
+                    </div>
+                </div>
+                <div class="product-card bg-gray-50 rounded-2xl overflow-hidden group border border-gray-100">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sofa Sets" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-10 h-10 bg-accent-50 text-accent-600 rounded-full flex items-center justify-center mb-3"><i class="fa-solid fa-couch"></i></div>
+                        <h3 class="font-bold text-xl text-gray-900 mb-1">Sofa Sets</h3>
+                        <p class="text-gray-500 text-sm">Steel, wooden, corner, woven &amp; TV sofas</p>
+                    </div>
+                </div>
+                <div class="product-card bg-gray-50 rounded-2xl overflow-hidden group border border-gray-100">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Beds" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-10 h-10 bg-wood-100 text-wood-800 rounded-full flex items-center justify-center mb-3"><i class="fa-solid fa-bed"></i></div>
+                        <h3 class="font-bold text-xl text-gray-900 mb-1">Beds</h3>
+                        <p class="text-gray-500 text-sm">Steel beds, wooden beds, bunk beds</p>
+                    </div>
+                </div>
+                <div class="product-card bg-gray-50 rounded-2xl overflow-hidden group border border-gray-100">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chairs and Tables" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-3"><i class="fa-solid fa-chair"></i></div>
+                        <h3 class="font-bold text-xl text-gray-900 mb-1">Chairs &amp; Tables</h3>
+                        <p class="text-gray-500 text-sm">Plastic chairs, rolling chairs, office tables</p>
+                    </div>
+                </div>
+                <div class="product-card bg-gray-50 rounded-2xl overflow-hidden group border border-gray-100">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dining Tables" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-10 h-10 bg-green-50 text-green-600 rounded-full flex items-center justify-center mb-3"><i class="fa-solid fa-utensils"></i></div>
+                        <h3 class="font-bold text-xl text-gray-900 mb-1">Dining Tables</h3>
+                        <p class="text-gray-500 text-sm">All types of dining tables</p>
+                    </div>
+                </div>
+                <div class="product-card bg-gray-50 rounded-2xl overflow-hidden group border border-gray-100">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Interior Works" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-10 h-10 bg-orange-50 text-orange-600 rounded-full flex items-center justify-center mb-3"><i class="fa-solid fa-house-chimney-window"></i></div>
+                        <h3 class="font-bold text-xl text-gray-900 mb-1">Interior Works</h3>
+                        <p class="text-gray-500 text-sm">Custom woodwork and interior finishing</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-primary-900 text-primary-900 font-bold rounded-full hover:bg-primary-900 hover:text-white transition-colors">
+                    Ask about a specific item <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-wood-800 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="font-serif font-bold text-3xl md:text-4xl text-white mb-6 leading-tight">
+                Looking for quality furniture to make your home beautiful?
+            </h2>
+            <p class="text-wood-200 text-lg mb-8 max-w-2xl mx-auto">Good design, solid wood, fair price. Reach out to Praveen Furnitures today.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="tel:+916374191464" class="px-8 py-3 bg-white text-wood-800 font-bold rounded-full hover:bg-wood-100 transition shadow-lg flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-phone text-accent-600"></i> 6374191464
+                </a>
+                <a href="tel:+919487058854" class="px-8 py-3 bg-primary-600 border border-primary-500 text-white font-bold rounded-full hover:bg-primary-500 transition shadow-lg flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-phone"></i> 9487058854
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+                <div class="p-10 lg:p-12 bg-primary-900 text-white relative overflow-hidden">
+                    <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary-800 rounded-full blur-3xl opacity-50"></div>
+                    <div class="relative z-10">
+                        <span class="text-primary-200 font-semibold tracking-wider uppercase text-sm mb-2 block">Call or visit us</span>
+                        <h2 class="font-serif font-bold text-3xl lg:text-4xl mb-8">Get in Touch</h2>
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1"><i class="fa-solid fa-phone-volume text-xl text-accent-400"></i></div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-white/90 mb-2">Phone Numbers</h4>
+                                    <div class="space-y-2 font-mono text-lg">
+                                        <a href="tel:+916374191464" class="block hover:text-accent-400 transition-colors flex items-center gap-2"><i class="fa-brands fa-whatsapp text-green-400"></i> 63741 91464</a>
+                                        <a href="tel:+919487058854" class="block hover:text-accent-400 transition-colors">94870 58854</a>
+                                        <a href="tel:+918428715226" class="block hover:text-accent-400 transition-colors">84287 15226</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="border-white/10">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1"><i class="fa-solid fa-location-dot text-xl text-accent-400"></i></div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-white/90 mb-2">Address</h4>
+                                    <address class="not-italic text-gray-300 leading-relaxed text-base">180/10, Mayadiputhur<br>Eruvadi Road - 627102</address>
+                                </div>
+                            </div>
+                            <hr class="border-white/10">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1"><i class="fa-solid fa-file-invoice-dollar text-xl text-accent-400"></i></div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-white/90 mb-1">GSTIN</h4>
+                                    <p class="font-mono text-gray-300">33EDUPD3819M1Z3</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-10 lg:p-12 flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">How to Find Us</h3>
+                    <div class="w-full h-64 bg-gray-100 rounded-2xl border border-gray-200 overflow-hidden relative group">
+                        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Map" class="w-full h-full object-cover opacity-60">
+                        <div class="absolute inset-0 bg-black/5 flex flex-col items-center justify-center p-4 text-center">
+                            <div class="w-14 h-14 bg-accent-600 text-white rounded-full flex items-center justify-center shadow-lg mb-3 animate-bounce"><i class="fa-solid fa-location-dot text-2xl"></i></div>
+                            <p class="font-semibold text-gray-900 bg-white/90 px-4 py-2 rounded-lg shadow-sm backdrop-blur-sm">Mayadiputhur, Eruvadi Road</p>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <p class="text-gray-600 mb-4">Come visit our shop and see the furniture for yourself. You're always welcome.</p>
+                        <a href="https://maps.google.com/?q=Mayadiputhur+Eruvadi+Road+627102" target="_blank" class="w-full block text-center px-6 py-3.5 bg-gray-900 hover:bg-black text-white rounded-xl font-medium transition-colors shadow-md">
+                            <i class="fa-solid fa-map-location-dot mr-2"></i> Open in Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 pt-16 pb-8 border-t-4 border-primary-600 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center text-white"><i class="fa-solid fa-couch text-xl"></i></div>
+                        <span class="font-serif font-bold text-2xl text-white">Praveen Furnitures</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed text-sm">Good quality, fair price. All woodwork needed to make your home beautiful.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold text-lg mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="hover:text-primary-400 transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Home</a></li>
+                        <li><a href="#products" class="hover:text-primary-400 transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Products</a></li>
+                        <li><a href="#services" class="hover:text-primary-400 transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Services</a></li>
+                        <li><a href="#contact" class="hover:text-primary-400 transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold text-lg mb-6 uppercase tracking-wider text-sm">Business Hours</h4>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between border-b border-gray-800 pb-2"><span>Monday – Saturday:</span><span class="text-white">9:00 AM – 9:00 PM</span></li>
+                        <li class="flex justify-between border-b border-gray-800 pb-2"><span>Sunday:</span><span class="text-white">10:00 AM – 2:00 PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-500">&copy; 2026 Praveen Furnitures. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary-600 hover:text-white transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-600 hover:text-white transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary-600 hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const icon = btn.querySelector('i');
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-xmark');
+            });
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                });
+            });
+            const nav = document.querySelector('nav');
+            window.addEventListener('scroll', () => {
+                nav.classList.toggle('shadow-md', window.scrollY > 20);
+            });
+        });
+    </script>
+</body>
+</html>
